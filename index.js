@@ -28,64 +28,74 @@ class School {
   }
 }
 
-let schUser = new School();
-schUser.addStd(["A", "B", "C"]);
-schUser.addTeacher(["D", "E", "F"]);
-schUser.addPrincipal(["G", "H", "I"]);
+// DEFINING NEW SCHOOL
+// let schUser = new School();
+// schUser.addStd(["A", "B", "C"]);
+// schUser.addTeacher(["D", "E", "F"]);
+// schUser.addPrincipal(["G", "H", "I"]);
 
-console.log(schUser.showStd());
-console.log(schUser.showPrincipal());
-console.log(schUser.showTeacher());
+// CHECKING SCHOOL PROPERTIES
+// console.log(schUser);
+// console.log(schUser.showPrincipal());
+// console.log(schUser.showTeacher());
 
+// CHECKING IF LOCAL STORAGE CAN MODIFY DATA
+// localStorage.setItem("school", JSON.stringify(schUser));
+// let schoolUser =JSON.parse(localStorage.getItem("school"));
+// schoolUser.teacherArr.push("Jsjkfhj");
+// localStorage.setItem("school", JSON.stringify(schoolUser));
+// console.log(schoolUser);
 
-// class Employee {
-//   constructor(name, address, phone, email, basicSalary, expenses) {
-//     this.name = name;
-//     this.id = 0;
-//     this.phone = phone;
-//     this.basicSalary = basicSalary;
-//     this.expenses = expenses;
-//   }
-//   getEmployeeDetails() {
-//     this.id++;
-//     return `my name is${this.name} with ${this.id}`;
-//   }
-//   getSalary() {}
-// }
+class Employee {
+  constructor(name, address, phone, email, basicSalary, expenses) {
+    this.name = name;
+    this.id = 0;
+    this.phone = phone;
+    this.basicSalary = basicSalary;
+    this.expenses = expenses;
+  }
+  getEmployeeDetails() {
+    return `id:${this.id} 
+    name: ${this.name}
+    phone: ${this.phone}
+    basic salary: ${this.basicSalary}
+    expenses: ${this.expenses}
+    `;
+  }
+  getSalary() {
+    return this.basicSalary;
+  }
+}
+class Teacher extends Employee {
+  constructor(classNo) {
+    this.classNo = classNo;
+  }
+  getTeacherDetails() {}
+}
+class Principal extends Employee {
+  constructor(PrincipalBonus) {
+    this.PrincipalBonus = PrincipalBonus;
+  }
+  getSalary() {
+  }
+}
 
-// // let userGrace = new Employee(`Grace`,`lagos Ng`,911,`sisGrace.com`,10,100);
-// // console.log(userGrace.getEmployeeDetails())
+class Student {
+  constructor(stdId, stdName, stdLevel) {
+    this.stdId = stdId;
+    this.stdName = stdName;
+    this.stdLevel = stdLevel;
+  }
+}
 
-// class Principal extends Employee {
-//   constructor(PrincipalBonus) {
-//     this.PrincipalBonus = PrincipalBonus;
-//   }
-// }
-// class Teacher extends Employee {
-//   constructor(classNo) {
-//     this.classNo = classNo;
-//   }
-//   getTeacherDetails() {}
-// }
+class Subject {
+  constructor(sbjName, teacher, student) {
+    this.sbjName = sbjName;
+    this.teacher = teacher;
+    this.student = student;
+  }
 
-// class Student {
-//   constructor(stdId, stdName, stdLevel) {
-//     this.stdId = stdId;
-//     this.stdName = stdName;
-//     this.stdLevel = stdLevel;
-//   }
-// }
-
-// class Subject {
-//   constructor(sbjName, teacher, student) {
-//     this.sbjName = sbjName;
-//     this.teacher = teacher;
-//     this.student = student;
-//   }
-
-// }
-// // console.log(schDB.addStd([`Michael`,`Grace`,`blessing`]))
-// // let schDB = new School();
+}
 
 // const promptUser = (data) => {
 //   return prompt(data);

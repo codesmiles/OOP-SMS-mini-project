@@ -76,4 +76,3 @@ When you choose 3 to add Subject:
 2.	Should choose object of student and object of Teacher from existing objects only. (Pass any object of student and object of teacher that does not exist. The course is not added)
 When you choose 6 ask user to enter subject to know how many students are registerd in this subject.
 Exit of project when choose 7 only
-
