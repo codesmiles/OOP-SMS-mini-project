@@ -9,21 +9,21 @@ class School {
     this.stdArr.push(...val);
     return this.stdArr;
   }
-  showStd (){
-    return this.stdArr  
+  showStd() {
+    return this.stdArr;
   }
   addTeacher(val) {
     this.teacherArr.push(...val);
     return this.teacherArr;
   }
-  showTeacher (){
-    return this.teacherArr
+  showTeacher() {
+    return this.teacherArr;
   }
   addPrincipal(val) {
     this.principalarr.push(...val);
     return this.principalarr;
   }
-  showPrincipal(){
+  showPrincipal() {
     return this.principalarr;
   }
 }
@@ -76,8 +76,7 @@ class Principal extends Employee {
   constructor(PrincipalBonus) {
     this.PrincipalBonus = PrincipalBonus;
   }
-  getSalary() {
-  }
+  getSalary() {}
 }
 
 class Student {
@@ -94,82 +93,96 @@ class Subject {
     this.teacher = teacher;
     this.student = student;
   }
-
 }
 
-// const promptUser = (data) => {
-//   return prompt(data);
-// };
+const promptUser = (data) => {
+  return prompt(data);
+};
 
-// let intro = "Welcome to my school!!!\n My name is Grace.";
-// // alert(intro);
+let intro = "Welcome to my school!!!\n My name is Grace.";
+// alert(intro);
 
-// let help =
-//   "how can we help your ministry?\n 1. Add employee \n 2. Add Student. \n 3. Add subject \n 4. show subject \n 5. Display salaries of employees. \n 6. Finding the number of students registered in particular subject \n 7. exit";
-// let question = promptUser(help);
+let help =
+  "how can we help your ministry?\n 1. Add employee \n 2. Add Student. \n 3. Add subject \n 4. show subject \n 5. Display salaries of employees. \n 6. Finding the number of students registered in particular subject \n 7. exit";
+let question = parseInt(promptUser(help));
 
-// console.log(typeof Number(question));
 
-// switch (parseInt(question)) {
-//   case 1:
-//     let employeeTypeInput = "choose Employee \n 1. Teacher \n 2. Principal";
-//     let chooseEmplyeeType = promptUser(employeeTypeInput);
-//     // console.log(chooseEmplyeeType)
+switch (question) {
+  // ADD EMPLOYEE
+  case 1:
+    let employeeTypeInput = "choose Employee \n 1. Teacher \n 2. Principal";
+    let chooseEmplyeeType = promptUser(employeeTypeInput);
 
-//     if (parseInt(chooseEmplyeeType) === 1) {
-//       const teacherBioInfo =
-//         "Fill in this data accordingly\n teacher's name,address,phone number,email address,teacher basic Salary,teacher's expenses,number of classes teacher teacher";
-//       let teacherData = promptUser(teacherBioInfo).split(",");
-//       const teacherUser = new Teacher(...teacherData);
-//       localStorage.setItem(
-//         `teacher${Math.round(Math.random() * 101)}`,
-//         teacherUser
-//       );
-//       alert(`Data saved`);
-//       // localStorage
-//     } else if (parseInt(chooseEmplyeeType) === 2) {
-//       const principalBioInfo =
-//         "Fill in this data accordingly\n the principal name,address,phone number,email,the basic Salary,living expenses,principal's bonus";
-//       let principalData = promptUser(teacherBioInfo).split(",");
-//       const principalUser = new Teacher(...teacherData);
-//       localStorage.setItem(
-//         `principal${Math.round(Math.random() * 101)}`,
-//         principalUser
-//       );
-//       alert(`Data saved`);
-//       // localStorage
-//     }
+    // ADD TEACHER
+    if (parseInt(chooseEmplyeeType) === 1) {
+      const teacherBioInfo =
+        "Fill in this data accordingly\n teacher's name,address,phone number,email address,teacher basic Salary,teacher's expenses,number of classes teacher teacher";
+      let teacherData = promptUser(teacherBioInfo).split(",");
+      const teacherUser = new Teacher(...teacherData);
+      localStorage.setItem(
+        `teacher${Math.round(Math.random() * 101)}`,
+        teacherUser
+      );
+      alert(`Data saved`);
+      // localStorage
+    }
 
-//     break;
+    // ADD EMPLOYEE
+    else if (parseInt(chooseEmplyeeType) === 2) {
+      const principalBioInfo =
+        "Fill in this data accordingly\n the principal name,address,phone number,email,the basic Salary,living expenses,principal's bonus";
+      let principalData = promptUser(teacherBioInfo).split(",");
+      const principalUser = new Teacher(...teacherData);
+      localStorage.setItem(
+        `principal${Math.round(Math.random() * 101)}`,
+        principalUser
+      );
+      alert(`Data saved`);
+      // localStorage
+    } else {
+      alert(`Error, Data inputed is not a number`);
+    }
 
-//   case 2:
-//     let StdDataInput =
-//       "Input according to this manner \n student-Id,student-Name,student-Level";
-//     let stdInputData = promptUser(StdDataInput).split(",");
-//     let studentUser = new Student(...stdInputData);
-//     studentUser = JSON.stringify(studentUser);
-//     localStorage.setItem(
-//       `student${Math.round(Math.random() * 101)}`,
-//       studentUser
-//     );
-//     localStorage;
-//     break;
-//   case 3:
-//     const inputSubjectInfo = "Kindly fill accordingly \n ";
-//     const sujectData = primptUser();
-//     break;
-//   case 4:
-//     break;
+    break;
 
-//   case 5:
-//     let employeeInput = "choose Employee \n 1. Teacher \n 2. Principal";
-//     let chooseEmplyee = promptUser(employeeInput);
-//     // console.log(chooseEmplyee)
+  // ADD STUDENT
+  case 2:
+    let StdDataInput =
+      "Input according to this manner \n student-Id,student-Name,student-Level";
+    let stdInputData = promptUser(StdDataInput).split(",");
+    let studentUser = new Student(...stdInputData);
+    studentUser = JSON.stringify(studentUser);
+    localStorage.setItem(
+      `student${Math.round(Math.random() * 101)}`,
+      studentUser
+    );
+    localStorage;
+    break;
 
-//     break;
-//   case 6:
-//     break;
-//   case 7:
-//     alert(`GOOD BYE`);
-//     break;
-// }
+  // ADD SUBJECT
+  case 3:
+    const inputSubjectInfo = "Kindly fill accordingly \n ";
+    const sujectData = primptUser();
+    break;
+
+  // SHOW SUBJECT
+  case 4:
+    break;
+
+  // DISPLAY SALARIES OF EMPLOYEES
+  case 5:
+    let employeeInput = "choose Employee \n 1. Teacher \n 2. Principal";
+    let chooseEmplyee = promptUser(employeeInput);
+    // console.log(chooseEmplyee)
+    break;
+
+  // FINDING THE NUMBER OF STUDENT THAT REGISTERED FOR A PARTICULR SUBJECT
+  case 6:
+    break;
+
+  // EXIT THE PROGRAM
+  case 7:
+    alert(`GOOD BYE`);
+    localStorage.clear()
+    break;
+}
