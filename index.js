@@ -2,7 +2,7 @@ class School {
   constructor() {
     this.stdArr = [];
     this.teacherArr = [];
-    this.principalarr = [];
+    this.principalArr = [];
   }
 
   addStd(val) {
@@ -67,13 +67,17 @@ class Employee {
   }
 }
 class Teacher extends Employee {
-  constructor(classNo) {
+  constructor(name, address, phone, email, basicSalary, expenses,classNo) {
+    super(name, address, phone, email, basicSalary, expenses);
     this.classNo = classNo;
   }
   getTeacherDetails() {}
+
+  
 }
 class Principal extends Employee {
-  constructor(PrincipalBonus) {
+  constructor(name, address, phone, email, basicSalary, expenses,PrincipalBonus) {
+    super(name, address, phone, email, basicSalary, expenses);
     this.PrincipalBonus = PrincipalBonus;
   }
   getSalary() {}
@@ -99,12 +103,20 @@ const promptUser = (data) => {
   return prompt(data);
 };
 
-let intro = "Welcome to my school!!!\n My name is Grace.";
-// alert(intro);
+const saveSch = () => {
+  let newSchool = new School();
+  localStorage.length === 0 &&
+    localStorage.setItem("school", JSON.stringify(newSchool));
+};
+// saveSch()
+
+// let intro = "Welcome to my school!!!\n My name is Grace.";
+// // alert(intro);
 
 let help =
   "how can we help your ministry?\n 1. Add employee \n 2. Add Student. \n 3. Add subject \n 4. show subject \n 5. Display salaries of employees. \n 6. Finding the number of students registered in particular subject \n 7. exit";
 let question = parseInt(promptUser(help));
+
 
 
 switch (question) {
@@ -115,28 +127,36 @@ switch (question) {
 
     // ADD TEACHER
     if (parseInt(chooseEmplyeeType) === 1) {
+  
+      saveSch() // CREATE A SCHOOL CLASS
+      // mike,lagos,090300200400,mike.com,20000,2000,3
       const teacherBioInfo =
-        "Fill in this data accordingly\n teacher's name,address,phone number,email address,teacher basic Salary,teacher's expenses,number of classes teacher teacher";
+        "Fill in this data accordingly\n teacher's name,address,phone number,email address,teacher basic Salary,teacher's expenses,class number";
       let teacherData = promptUser(teacherBioInfo).split(",");
+
       const teacherUser = new Teacher(...teacherData);
-      localStorage.setItem(
-        `teacher${Math.round(Math.random() * 101)}`,
-        teacherUser
-      );
-      alert(`Data saved`);
-      // localStorage
+      let schData = JSON.parse(localStorage.getItem("school"));
+      schData.teacherArr.push(teacherUser);
+      localStorage.setItem("school", JSON.stringify(schData));
+
+      // `teacher${Math.round(Math.random() * 101)}`:
     }
 
-    // ADD EMPLOYEE
+    // ADD PRINCIPAL
     else if (parseInt(chooseEmplyeeType) === 2) {
+      saveSch() // CREATE A SCHOOL CLASS
+      // smiles,abj,0905004300200,smiles.com,2000,200,300
+
       const principalBioInfo =
         "Fill in this data accordingly\n the principal name,address,phone number,email,the basic Salary,living expenses,principal's bonus";
-      let principalData = promptUser(teacherBioInfo).split(",");
-      const principalUser = new Teacher(...teacherData);
-      localStorage.setItem(
-        `principal${Math.round(Math.random() * 101)}`,
-        principalUser
-      );
+      let principalData = promptUser(principalBioInfo).split(",");
+
+      const user = new Principal(...principalData);
+      // console.log(schoolData)
+
+      let schoolData = JSON.parse(localStorage.getItem("school"));      
+      schoolData["principalArr"].push(user);
+      localStorage.setItem("school", JSON.stringify(schoolData));
       alert(`Data saved`);
       // localStorage
     } else {
@@ -151,18 +171,25 @@ switch (question) {
       "Input according to this manner \n student-Id,student-Name,student-Level";
     let stdInputData = promptUser(StdDataInput).split(",");
     let studentUser = new Student(...stdInputData);
-    studentUser = JSON.stringify(studentUser);
-    localStorage.setItem(
-      `student${Math.round(Math.random() * 101)}`,
-      studentUser
-    );
+    // 1,joshua,200
+
+    let schoolData = JSON.parse(localStorage.getItem("school"));      
+      schoolData["stdArr"].push(studentUser);
+      localStorage.setItem("school", JSON.stringify(schoolData));
+      alert(`Data saved`);
+
+    // studentUser = JSON.stringify(studentUser);
+    // localStorage.setItem(
+    //   `student${Math.round(Math.random() * 101)}`,
+    //   studentUser
+    // );
     localStorage;
     break;
 
   // ADD SUBJECT
   case 3:
     const inputSubjectInfo = "Kindly fill accordingly \n ";
-    const sujectData = primptUser();
+    const sujectData = promptUser();
     break;
 
   // SHOW SUBJECT
@@ -183,6 +210,6 @@ switch (question) {
   // EXIT THE PROGRAM
   case 7:
     alert(`GOOD BYE`);
-    localStorage.clear()
+    localStorage.clear();
     break;
 }
