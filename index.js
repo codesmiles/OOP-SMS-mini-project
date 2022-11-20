@@ -152,7 +152,7 @@ switch (question) {
       let principalData = promptUser(principalBioInfo).split(",");
 
       const user = new Principal(...principalData);
-      // console.log(schoolData)
+   
 
       let schoolData = JSON.parse(localStorage.getItem("school"));      
       schoolData["principalArr"].push(user);
@@ -193,12 +193,14 @@ switch (question) {
   // DISPLAY SALARIES OF EMPLOYEES
   case 5:
     let employeeInput = "choose Employee \n 1. Teacher \n 2. Principal";
+    // a accept employee name ato filter and get the necessary data
     let chooseEmplyee = promptUser(employeeInput);
     // console.log(chooseEmplyee)
     break;
 
   // FINDING THE NUMBER OF STUDENT THAT REGISTERED FOR A PARTICULR SUBJECT
   case 6:
+    // check the subject and get the registered employee and all
     break;
 
   // EXIT THE PROGRAM
