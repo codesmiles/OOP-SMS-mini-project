@@ -174,16 +174,10 @@ switch (question) {
     // 1,joshua,200
 
     let schoolData = JSON.parse(localStorage.getItem("school"));      
-      schoolData["stdArr"].push(studentUser);
+      schoolData.stdArr.push(studentUser);
       localStorage.setItem("school", JSON.stringify(schoolData));
       alert(`Data saved`);
-
-    // studentUser = JSON.stringify(studentUser);
-    // localStorage.setItem(
-    //   `student${Math.round(Math.random() * 101)}`,
-    //   studentUser
-    // );
-    localStorage;
+    // localStorage;
     break;
 
   // ADD SUBJECT
